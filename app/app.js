@@ -10,7 +10,8 @@ angular.module('calendarDemoApp', []).
             transclude: true,
             controller: function($scope, $element){
                 $scope.calendar = {
-                    dates: CalendarRange.getMonthlyRange(new Date("May 01, 2016 00:00:00"))
+                    dates: CalendarRange.getMonthlyRange(new Date(2016, 3, 1))
+                    // "May 01, 2016 00:00:00"
                 }
             }
         };
