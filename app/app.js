@@ -9,10 +9,21 @@ angular.module('calendarDemoApp', []).
             scope: true,
             transclude: true,
             controller: function($scope, $element){
-                $scope.calendar = {
-                    dates: CalendarRange.getMonthlyRange(new Date(2016, 3, 1))
-                    // "May 01, 2016 00:00:00"
-                }
+                var date = new Date();
+                $scope.currentMonth = date.getMonth();
+                $scope.currentYear = date.getFullYear();
+                
+                $scope.dates;
+                
+                $scope.reset = function(){
+                    console.log('reset called');
+                    $scope.setCalendar($scope.currentMonth, $scope.currentYear);
+                };
+                
+                $scope.setCalendar = function(month, year) {
+                    $scope.dates = CalendarRange.getMonthlyRange(new Date(year, month, 1));
+                };
+                $scope.setCalendar($scope.currentMonth, $scope.currentYear);
             }
         };
     })
