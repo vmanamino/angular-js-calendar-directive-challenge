@@ -22,8 +22,17 @@ angular.module('calendarDemoApp', []).
                 
                 $scope.setCalendar = function(month, year) {
                     $scope.dates = CalendarRange.getMonthlyRange(new Date(year, month, 1));
+                    $scope.dates.days.forEach(addClass);
                 };
                 $scope.setCalendar($scope.currentMonth, $scope.currentYear);
+                
+                function addClass(element, index, array) {
+                console.log(element);
+                if (element.month < $scope.currentMonth || element.month > $scope.currentMonth) {
+                    element.monthClass = 'previous-or-next-month';
+                    console.log(element.monthClass);
+                }
+            }
             }
         };
     })
